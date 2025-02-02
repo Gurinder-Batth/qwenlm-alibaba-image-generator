@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: fastapi_app
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app  # Mount the current directory to /app in the container
+    env_file:
+      - .env  # Load environment variables from .env file
+    restart: unless-stopped

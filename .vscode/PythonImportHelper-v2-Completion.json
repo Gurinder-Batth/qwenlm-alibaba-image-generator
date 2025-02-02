@@ -1,0 +1,146 @@
+[
+    {
+        "label": "FastAPI",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Request",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Body",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTMLResponse",
+        "importPath": "fastapi.responses",
+        "description": "fastapi.responses",
+        "isExtraImport": true,
+        "detail": "fastapi.responses",
+        "documentation": {}
+    },
+    {
+        "label": "StaticFiles",
+        "importPath": "fastapi.staticfiles",
+        "description": "fastapi.staticfiles",
+        "isExtraImport": true,
+        "detail": "fastapi.staticfiles",
+        "documentation": {}
+    },
+    {
+        "label": "Jinja2Templates",
+        "importPath": "fastapi.templating",
+        "description": "fastapi.templating",
+        "isExtraImport": true,
+        "detail": "fastapi.templating",
+        "documentation": {}
+    },
+    {
+        "label": "load_dotenv",
+        "importPath": "dotenv",
+        "description": "dotenv",
+        "isExtraImport": true,
+        "detail": "dotenv",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "httpx",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "httpx",
+        "description": "httpx",
+        "detail": "httpx",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "app = FastAPI()\n# Load environment variables\nload_dotenv()\n# Fetch OpenAI API key from environment variables\nACCESS_TOKEN = os.getenv(\"ACCESS_TOKEN\")\nSESSION_ID = os.getenv(\"SESSION_ID\")\nCHAT_ID = os.getenv(\"CHAT_ID\")\nID = os.getenv(\"ID\")\nif not ACCESS_TOKEN:\n    raise HTTPException(status_code=500, detail=\"Missing ACCESS_TOKEN. Set it in your .env file.\")",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "ACCESS_TOKEN",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "ACCESS_TOKEN = os.getenv(\"ACCESS_TOKEN\")\nSESSION_ID = os.getenv(\"SESSION_ID\")\nCHAT_ID = os.getenv(\"CHAT_ID\")\nID = os.getenv(\"ID\")\nif not ACCESS_TOKEN:\n    raise HTTPException(status_code=500, detail=\"Missing ACCESS_TOKEN. Set it in your .env file.\")\n# Configure Jinja2 templates\ntemplates = Jinja2Templates(directory=\"templates\")\n# Serve static files from the 'assets' directory\napp.mount(\"/assets\", StaticFiles(directory=\"assets\"), name=\"assets\")",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "SESSION_ID",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "SESSION_ID = os.getenv(\"SESSION_ID\")\nCHAT_ID = os.getenv(\"CHAT_ID\")\nID = os.getenv(\"ID\")\nif not ACCESS_TOKEN:\n    raise HTTPException(status_code=500, detail=\"Missing ACCESS_TOKEN. Set it in your .env file.\")\n# Configure Jinja2 templates\ntemplates = Jinja2Templates(directory=\"templates\")\n# Serve static files from the 'assets' directory\napp.mount(\"/assets\", StaticFiles(directory=\"assets\"), name=\"assets\")\n@app.get(\"/\", response_class=HTMLResponse)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "CHAT_ID",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "CHAT_ID = os.getenv(\"CHAT_ID\")\nID = os.getenv(\"ID\")\nif not ACCESS_TOKEN:\n    raise HTTPException(status_code=500, detail=\"Missing ACCESS_TOKEN. Set it in your .env file.\")\n# Configure Jinja2 templates\ntemplates = Jinja2Templates(directory=\"templates\")\n# Serve static files from the 'assets' directory\napp.mount(\"/assets\", StaticFiles(directory=\"assets\"), name=\"assets\")\n@app.get(\"/\", response_class=HTMLResponse)\nasync def read_blog(request: Request):",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "ID",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "ID = os.getenv(\"ID\")\nif not ACCESS_TOKEN:\n    raise HTTPException(status_code=500, detail=\"Missing ACCESS_TOKEN. Set it in your .env file.\")\n# Configure Jinja2 templates\ntemplates = Jinja2Templates(directory=\"templates\")\n# Serve static files from the 'assets' directory\napp.mount(\"/assets\", StaticFiles(directory=\"assets\"), name=\"assets\")\n@app.get(\"/\", response_class=HTMLResponse)\nasync def read_blog(request: Request):\n    return templates.TemplateResponse(\"index.html\", {\"request\": request})",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "templates",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "templates = Jinja2Templates(directory=\"templates\")\n# Serve static files from the 'assets' directory\napp.mount(\"/assets\", StaticFiles(directory=\"assets\"), name=\"assets\")\n@app.get(\"/\", response_class=HTMLResponse)\nasync def read_blog(request: Request):\n    return templates.TemplateResponse(\"index.html\", {\"request\": request})\n@app.post(\"/create-photo\")\nasync def create_photo(prompt: str = Body(..., embed=True)):\n    url = \"https://chat.qwenlm.ai/api/chat/completions\"\n    headers = {",
+        "detail": "app",
+        "documentation": {}
+    }
+]
